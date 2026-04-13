@@ -76,9 +76,9 @@ public class PathfindingUtils
                 throw new PathfindingException("Could not find path between waypoint " + i + " and " + (i + 1));
 
             if(!fullPathPoints.isEmpty() && !segment.isEmpty() && isAbove(segment.getFirst(), fullPathPoints.getLast()))
+            {
                 segment.removeFirst();
-            else if(!segment.isEmpty())
-                segment.set(0, segment.getFirst().subtract(0, 1, 0));
+            }
 
             fullPathPoints.addAll(segment);
 
