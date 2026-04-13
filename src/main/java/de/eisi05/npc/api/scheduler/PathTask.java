@@ -37,7 +37,7 @@ public class PathTask extends BukkitRunnable
     private static final double gravity = -0.08;
     private static final double jumpVelocity = 0.5;
     private static final double terminalVelocity = -0.5;
-    private static final double stepHeight = -0.5;
+    private static final double stepHeight = 0.5;
 
     private final NPC npc;
     private final Path path;
@@ -341,6 +341,7 @@ public class PathTask extends BukkitRunnable
         {
             if(toTarget.getY() > 0 && toTarget.getY() <= stepHeight && movement.lengthSquared() > 1e-6)
             {
+                System.out.println("TRUE  FIRST");
                 yChange = Math.min(toTarget.getY(), stepHeight);
                 verticalVelocity = 0;
                 return new PhysicsResult(yChange, true);
@@ -349,12 +350,14 @@ public class PathTask extends BukkitRunnable
             {
                 verticalVelocity = jumpVelocity;
                 onGround = false;
+                System.out.println("TRUE  SECOND");
             }
             else
             {
                 verticalVelocity = 0;
                 if(Math.abs(currentPos.getY() - groundY) > 1e-6)
                     currentPos.setY(groundY);
+                System.out.println("ELSE RESULT");
                 return new PhysicsResult(0, true);
             }
         }
